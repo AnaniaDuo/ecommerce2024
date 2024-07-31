@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
   models: { Product },
 } = require("../db");
+const { requireToken, isAdmin } = require("./authentication");
 module.exports = router;
 
 // GET /api/products
@@ -26,7 +27,7 @@ router.get("/:productId", async (req, res, next) => {
 });
 
 // POST /api/products
-router.post("/", async (req, res, next) => {
+router.post("/", requireToken, isAdmin, async (req, res, next) => {
   try {
     const newProduct = await Product.create(req.body);
     res.status(201).send(newProduct);
@@ -36,7 +37,7 @@ router.post("/", async (req, res, next) => {
 });
 
 // PUT /api/products/productId
-router.put("/:productId", async (req, res, next) => {
+router.put("/:productId", requireToken, isAdmin, async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const productToBeUpdated = await Product.findByPk(productId);
@@ -48,7 +49,7 @@ router.put("/:productId", async (req, res, next) => {
 });
 
 // DELETE /api/products/:productId
-router.delete("/:productId", async (req, res, next) => {
+router.delete("/:productId", requireToken, isAdmin, async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const product = await Product.findByPk(productId);

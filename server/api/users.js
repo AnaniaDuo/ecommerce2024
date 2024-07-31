@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const {
-  models: { User, Order, OrderDetails },
+  models: { User, Order, OrderDetails, Product },
 } = require("../db");
+const { requireToken, isAdmin } = require("./authentication");
 module.exports = router;
 
 // GET /api/users
-router.get("/", async (req, res, next) => {
+router.get("/", requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and username fields - even though
@@ -27,7 +28,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // GET /api/users/:userId/cart
-router.get("/:userId/cart", async (req, res, next) => {
+router.get("/:userId/cart", requireToken, async (req, res, next) => {
   try {
     const cart = await Order.findOne({
       where: {
@@ -43,7 +44,7 @@ router.get("/:userId/cart", async (req, res, next) => {
 });
 
 // POST /api/users/:userId/cart
-router.post("/:userId/cart", async (req, res, next) => {
+router.post("/:userId/cart", requireToken, async (req, res, next) => {
   try {
     const userId = req.params.userId;
     const productId = req.body.productId;
@@ -71,40 +72,45 @@ router.post("/:userId/cart", async (req, res, next) => {
 });
 
 // DELETE /api/users/:userId/cart/:productId
-router.delete("/:userId/cart/:productId", async (req, res, next) => {
-  try {
-    const userId = req.params.userId;
-    const productId = req.body.productId;
-    const cart = await Order.findOne({
-      where: {
-        userId,
-        isCompleted: false,
-      },
-    });
-    const orderDetails = await OrderDetails.findOne({
-      where: {
-        orderId: cart.id,
-        productId,
-      },
-    });
+router.delete(
+  "/:userId/cart/:productId",
+  requireToken,
+  async (req, res, next) => {
+    try {
+      const userId = req.params.userId;
+      const productId = req.body.productId;
+      const cart = await Order.findOne({
+        where: {
+          userId,
+          isCompleted: false,
+        },
+      });
+      const orderDetails = await OrderDetails.findOne({
+        where: {
+          orderId: cart.id,
+          productId,
+        },
+      });
 
-    await orderDetails.destroy();
-    res.json(orderDetails);
-  } catch (err) {
-    next(err);
+      await orderDetails.destroy();
+      res.json(orderDetails);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 // modify isCompleted is true at checkout
 // put /api/users/:userId/checkout
-router.put("/:userId/checkout", async (req, res, next) => {
+router.put("/:userId/checkout", requireToken, async (req, res, next) => {
   try {
     const userId = req.params.userId;
     const order = await Order.findOne({
-      where: { userId, isComplete: false },
+      where: { userId, isCompleted: false },
       include: Product,
     });
-    await order.update(req.body);
+    const updatedOrder = await order.update(req.body);
+    res.json(updatedOrder);
   } catch (err) {
     next(err);
   }
@@ -112,7 +118,7 @@ router.put("/:userId/checkout", async (req, res, next) => {
 
 // modify product quantity
 // put /api/users/:userId/cart/:productId
-router.put("/:userId/cart/:productId", async (req, res, next) => {
+router.put("/:userId/cart/:productId", requireToken, async (req, res, next) => {
   try {
     const { userId, productId } = req.params;
     const cart = await Order.findOne({ where: { userId } });
