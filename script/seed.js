@@ -20,7 +20,7 @@ async function seed() {
       description:
         'Chai tea is a delightful and aromatic beverage that blends rich black tea with a symphony of spices and flavors. Originating from India, this traditional drink is known for its warming and invigorating properties. The word "chai" itself means "tea" in Hindi, and it perfectly captures the essence of this beloved drink.',
       imageUrl:
-        "https://images.ctfassets.net/67yjwz9a8c38/30nJ7mVR5LcFlNP8yjhjb2/e4cf64a570a7e219a70c151df017442d/1657985-794522703005-05.png",
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
       price: 10,
     }),
     Product.create({
@@ -28,7 +28,63 @@ async function seed() {
       description:
         "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
       imageUrl:
-        "https://banner2.cleanpng.com/20180304/vde/kisspng-green-tea-tieguanyin-dim-sum-breakfast-tea-packaging-5a9cb632cbbd86.2120475615202196988345.jpg",
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
+      price: 12,
+    }),
+    Product.create({
+      name: "Matcha",
+      description:
+        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+      imageUrl:
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
+      price: 12,
+    }),
+    Product.create({
+      name: "Jasmine",
+      description:
+        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+      imageUrl:
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
+      price: 12,
+    }),
+    Product.create({
+      name: "Orange Cinnamon",
+      description:
+        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+      imageUrl:
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
+      price: 12,
+    }),
+    Product.create({
+      name: "Oolong",
+      description:
+        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+      imageUrl:
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
+      price: 12,
+    }),
+    Product.create({
+      name: "Black",
+      description:
+        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+      imageUrl:
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
+      price: 12,
+    }),
+    Product.create({
+      name: "Ginger",
+      description:
+        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+      imageUrl:
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
+      price: 12,
+    }),
+    Product.create({
+      name: "Chamomile",
+      description:
+        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+      imageUrl:
+        "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
       price: 12,
     }),
   ]);
