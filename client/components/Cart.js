@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import Button from "./reusableComponents/Button";
 import ProductHorizontalCard from "./ProductHorizontalCard";
+import EmptyCartView from "./EmptyCartView";
 
 function Cart() {
   const [cartProducts, setCartProducts] = useState([]);
@@ -25,8 +26,12 @@ function Cart() {
     history.push("/home");
   }
 
+  if (!cartProducts.length) {
+    return <EmptyCartView />;
+  }
+
   return (
-    <div className="flex flex-wrap justify-center gap-4 py-8">
+    <div className="flex flex-wrap justify-center gap-4 mt-6 py-8">
       {cartProducts.map((product) => (
         <ProductHorizontalCard key={product.id} product={product} />
       ))}

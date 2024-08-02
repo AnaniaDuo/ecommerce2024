@@ -1,3 +1,4 @@
+import React from "react";
 export const ABOUT_US_INFO = [
   {
     title: "We Celebrate Our People",
@@ -12,3 +13,39 @@ export const ABOUT_US_INFO = [
     image: "environment.png",
   },
 ];
+
+export const ABOUT_US_LONG_DETAILS = (
+  <div>
+    <p className="text-xl font-bold text-gray-700">Welcome to Positivitea!</p>
+    <br />
+    <p>
+      At Positivitea, we believe that a cup of tea can bring positivity and
+      harmony to your day. Founded in 1989 by the passionate and tea-loving Li
+      Na, our company has been dedicated to serving premium, high-quality teas
+      that not only delight the senses but also contribute to the well-being of
+      our planet.
+    </p>
+    <p>
+      Li Na, whose love for tea and Zen inspired her to create Positivitea,
+      envisioned a company where every sip of tea could bring a moment of
+      tranquility and joy. Her journey began with a deep appreciation for the
+      natural world and a desire to give back. This passion led her to establish
+      Positivitea, where we proudly offer 12 exquisite flavors, each crafted to
+      provide a unique and enriching experience.
+    </p>
+    <br />
+    <p>
+      Our commitment extends beyond just providing exceptional tea. We are
+      devoted to making a positive impact on the environment. A portion of our
+      profits is dedicated to reforesting efforts, helping to plant and nurture
+      more trees around the globe. By choosing Positivitea, you are not only
+      indulging in the finest teas but also contributing to a greener, healthier
+      planet.\nDiscover our range of flavors and join us on a journey of taste,
+      mindfulness, and environmental stewardship. At Positivitea, every cup is
+      brewed with care, compassion, and a touch of positivity.{" "}
+    </p>
+    <br />
+    <br />
+    <p>Sip, relax, and make a difference with Positivitea.</p>
+  </div>
+);

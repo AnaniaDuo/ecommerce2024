@@ -25,9 +25,8 @@ export const Home = (props) => {
   }, []);
 
   return (
-    <div>
-      <h3>Welcome, {firstName}</h3>
-      <div className="flex items-center justify-center">
+    <div className="mt-8 ">
+      <div className="flex items-center justify-center ">
         <Filter
           products={products}
           setDisplayedProducts={setDisplayedProducts}
