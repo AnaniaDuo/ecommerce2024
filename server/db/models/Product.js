@@ -40,6 +40,10 @@ const Product = db.define("product", {
       min: 0,
     },
   },
+  isDecaf: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 module.exports = Product;

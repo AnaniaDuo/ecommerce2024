@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "./reusableComponents/Button";
 
 function SingleProduct() {
   const userId = useSelector((state) => {
@@ -42,12 +43,7 @@ function SingleProduct() {
         <div className="text-xl font-medium">${product.price}</div>
 
         <div>{product.description}</div>
-        <button
-          className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
-          onClick={handleAddToCart}
-        >
-          Add to Cart
-        </button>
+        <Button text="Add to Cart" onClickFunc={handleAddToCart} />
       </div>
     </div>
   );

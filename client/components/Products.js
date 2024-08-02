@@ -1,23 +1,10 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import ProductCard from "./ProductCard";
 
-function Products() {
-  // set states
-  const [products, setProducts] = useState([]);
-
-  // load all products
-  useEffect(() => {
-    async function fetchAllProducts() {
-      const { data } = await axios.get("/api/products");
-      setProducts(data);
-    }
-    fetchAllProducts();
-  }, []);
-
+function Products({ displayedProducts }) {
   return (
     <div className="flex flex-wrap justify-center gap-4 pb-12">
-      {products.map((product) => (
+      {displayedProducts.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>

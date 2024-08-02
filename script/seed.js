@@ -21,7 +21,7 @@ async function seed() {
         'Chai tea is a delightful and aromatic beverage that blends rich black tea with a symphony of spices and flavors. Originating from India, this traditional drink is known for its warming and invigorating properties. The word "chai" itself means "tea" in Hindi, and it perfectly captures the essence of this beloved drink.',
       imageUrl:
         "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
-      price: 10,
+      price: 12,
     }),
     Product.create({
       name: "Green Tea",
@@ -34,15 +34,15 @@ async function seed() {
     Product.create({
       name: "Matcha",
       description:
-        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+        "Matcha is a finely ground green tea powder known for its vibrant green color and rich, umami flavor. This traditional Japanese tea is celebrated for its high antioxidant content and its ability to provide a calm, focused energy. Enjoy it whisked into hot water or blended into your favorite smoothies and lattes for a refreshing boost.",
       imageUrl:
         "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
-      price: 12,
+      price: 15,
     }),
     Product.create({
       name: "Jasmine",
       description:
-        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+        "Jasmine tea is a fragrant and delicate tea infused with the sweet aroma of jasmine blossoms. Typically made from green tea leaves, it offers a soothing, floral flavor that calms the senses. This enchanting tea is perfect for moments of relaxation and tranquility, providing a sensory experience that delights both the palate and the spirit.",
       imageUrl:
         "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
       price: 12,
@@ -50,23 +50,24 @@ async function seed() {
     Product.create({
       name: "Orange Cinnamon",
       description:
-        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+        "Orange Cinnamon tea is a warm and inviting blend that combines the zesty brightness of oranges with the comforting spice of cinnamon. This aromatic tea offers a perfect balance of sweet and spicy notes, making it a delightful choice for cozy afternoons and festive occasions. Sip and savor the harmonious flavors that bring warmth and cheer to your cup.",
       imageUrl:
         "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
       price: 12,
+      isDecaf: true,
     }),
     Product.create({
       name: "Oolong",
       description:
-        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+        "Oolong tea is a partially fermented tea that strikes a perfect balance between green and black teas. Known for its complex flavor profile, oolong offers a smooth, floral taste with hints of fruit and honey. This versatile tea can be enjoyed throughout the day, providing a refreshing, aromatic experience that both energizes and relaxes.",
       imageUrl:
         "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
-      price: 12,
+      price: 15,
     }),
     Product.create({
       name: "Black",
       description:
-        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+        "Black tea is a robust and full-bodied tea known for its deep, rich flavor and invigorating qualities. Often enjoyed with a splash of milk and a touch of sugar, it provides a perfect pick-me-up any time of the day. Its high caffeine content and complex taste make it a versatile and beloved choice among tea enthusiasts worldwide.",
       imageUrl:
         "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
       price: 12,
@@ -74,18 +75,20 @@ async function seed() {
     Product.create({
       name: "Ginger",
       description:
-        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+        "Ginger tea is a bold and invigorating infusion made from fresh ginger root. Renowned for its warming properties and spicy kick, this tea is perfect for soothing the stomach and boosting immunity. Enjoy it hot to warm up on a chilly day or iced for a refreshing, zesty treat.",
       imageUrl:
         "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
       price: 12,
+      isDecaf: true,
     }),
     Product.create({
       name: "Chamomile",
       description:
-        "Green tea is a refreshing and healthful beverage known for its delicate flavor and numerous health benefits. Made from unoxidized tea leaves, it has a light, grassy taste with subtle floral notes. Rich in antioxidants, green tea promotes heart health, aids in weight management, and boosts metabolism. Enjoyed hot or cold, green tea is a versatile and soothing drink, perfect for any time of day.",
+        "Chamomile tea is a gentle and calming herbal infusion made from the delicate flowers of the chamomile plant. Known for its soothing properties, it offers a mild, floral flavor with hints of apple. Perfect for unwinding after a long day, chamomile tea promotes relaxation and restful sleep, making it a beloved choice for those seeking tranquility and peace in a cup.",
       imageUrl:
         "https://www.japanesegreenteain.com/cdn/shop/products/JapaneseMatchaGreenTea6.jpg?v=1698692562",
       price: 12,
+      isDecaf: true,
     }),
   ]);
 

@@ -28,7 +28,7 @@ router.get("/", requireToken, isAdmin, async (req, res, next) => {
 });
 
 // GET /api/users/:userId/cart
-router.get("/:userId/cart", requireToken, async (req, res, next) => {
+router.get("/:userId/cart", async (req, res, next) => {
   try {
     const cart = await Order.findOne({
       where: {
@@ -44,7 +44,7 @@ router.get("/:userId/cart", requireToken, async (req, res, next) => {
 });
 
 // POST /api/users/:userId/cart
-router.post("/:userId/cart", requireToken, async (req, res, next) => {
+router.post("/:userId/cart", async (req, res, next) => {
   try {
     const userId = req.params.userId;
     const productId = req.body.productId;
@@ -74,7 +74,7 @@ router.post("/:userId/cart", requireToken, async (req, res, next) => {
 // DELETE /api/users/:userId/cart/:productId
 router.delete(
   "/:userId/cart/:productId",
-  requireToken,
+
   async (req, res, next) => {
     try {
       const userId = req.params.userId;
@@ -102,7 +102,7 @@ router.delete(
 
 // modify isCompleted is true at checkout
 // put /api/users/:userId/checkout
-router.put("/:userId/checkout", requireToken, async (req, res, next) => {
+router.put("/:userId/checkout", async (req, res, next) => {
   try {
     const userId = req.params.userId;
     const order = await Order.findOne({
@@ -118,7 +118,7 @@ router.put("/:userId/checkout", requireToken, async (req, res, next) => {
 
 // modify product quantity
 // put /api/users/:userId/cart/:productId
-router.put("/:userId/cart/:productId", requireToken, async (req, res, next) => {
+router.put("/:userId/cart/:productId", async (req, res, next) => {
   try {
     const { userId, productId } = req.params;
     const cart = await Order.findOne({ where: { userId } });

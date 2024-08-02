@@ -5,6 +5,7 @@ import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
 import SingleProduct from "./components/SingleProduct";
 import Cart from "./components/Cart";
+import AboutUs from "./components/AboutUs";
 import { me } from "./store";
 
 /**
@@ -25,6 +26,7 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/products/:productId" component={SingleProduct} />
             <Route path="/users/:userId/cart" component={Cart} />
+            <Route path="/about" component={AboutUs} />
             {/* <Redirect to="/home" /> */}
           </Switch>
         ) : (
