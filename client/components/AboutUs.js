@@ -1,6 +1,6 @@
 import React from "react";
 import AboutUsCard from "./AboutUsCard";
-import { ABOUT_US_INFO, ABOUT_US_LONG_DETAILS } from "./utilities.js/constants";
+import { ABOUT_US_INFO, ABOUT_US_LONG_DETAILS } from "./utilities/constants";
 
 function AboutUs() {
   return (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Products from "./Products";
 import SearchBar from "./SearchBar";
+import AdminProducts from "./AdminProducts";
 import Filter from "./Filter";
 import axios from "axios";
 
@@ -9,7 +10,7 @@ import axios from "axios";
  * COMPONENT
  */
 export const Home = (props) => {
-  const { firstName } = props;
+  const { isAdmin } = props;
   // set states
   const [products, setProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
@@ -23,6 +24,10 @@ export const Home = (props) => {
     }
     fetchAllProducts();
   }, []);
+
+  useEffect(() => {
+    setDisplayedProducts(products);
+  }, [products]);
 
   return (
     <div className="mt-8 ">
@@ -38,7 +43,15 @@ export const Home = (props) => {
         />
       </div>
 
-      <Products displayedProducts={displayedProducts} />
+      {!isAdmin ? (
+        <Products displayedProducts={displayedProducts} />
+      ) : (
+        <AdminProducts
+          displayedProducts={displayedProducts}
+          products={products}
+          setProducts={setProducts}
+        />
+      )}
     </div>
   );
 };
@@ -48,7 +61,7 @@ export const Home = (props) => {
  */
 const mapState = (state) => {
   return {
-    firstName: state.auth.firstName,
+    isAdmin: state.auth.isAdmin,
   };
 };
 

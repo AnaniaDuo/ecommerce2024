@@ -1,4 +1,7 @@
 import React from "react";
+
+export const TOKEN = "token";
+
 export const ABOUT_US_INFO = [
   {
     title: "We Celebrate Our People",
