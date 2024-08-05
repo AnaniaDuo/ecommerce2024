@@ -3,6 +3,7 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "./reusableComponents/Button";
+import { TOKEN } from "../components/utilities/constants";
 
 function SingleProduct() {
   const userId = useSelector((state) => {
@@ -12,6 +13,7 @@ function SingleProduct() {
   const [product, setProduct] = useState({});
   const history = useHistory();
   const REACT_APP_BASE_URL = "http://localhost:8080";
+  const token = window.localStorage.getItem(TOKEN);
 
   useEffect(() => {
     async function fetchSingleProduct() {
@@ -22,9 +24,17 @@ function SingleProduct() {
   }, []);
 
   async function handleAddToCart() {
-    const response = await axios.post(`/api/users/${userId}/cart`, {
-      productId,
-    });
+    const response = await axios.post(
+      `/api/users/${userId}/cart`,
+      {
+        productId,
+      },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
     console.log("response", response);
     if (response.status === 200) {
       console.log("about to navigate to new page");
@@ -32,8 +42,6 @@ function SingleProduct() {
     }
   }
 
-  console.log("what is product id", productId);
-  console.log("what is product", product);
   return (
     <div className="flex p-4 gap-8 mt-8">
       <div className="flex justify-center">

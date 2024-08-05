@@ -1,17 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 import axios from "axios";
 import { TOKEN } from "../../components/utilities/constants";
 
 export function DrawerWithForm({
-  setShowAddProductSlideIn,
+  setShowSlideInModal,
   products,
   setProducts,
+  isUpdate = false,
+  selectedProduct = {},
+  setSelectedProduct = () => {},
 }) {
-  const [inputProduct, setInputProduct] = useState({});
+  const INITIAL_STATE = {
+    name: "",
+    title: "",
+    description: "",
+    price: "",
+    quantity: "",
+    isDecaf: false,
+  };
+  const [inputProduct, setInputProduct] = useState(INITIAL_STATE);
+  const token = window.localStorage.getItem(TOKEN);
+
+  useEffect(() => {
+    if (isUpdate) {
+      setInputProduct(selectedProduct);
+    }
+  }, []);
 
   function handleChange(event) {
-    console.log("is being changed");
     let { name, value } = event.target;
     if (["price", "quantity"].includes(name)) {
       value = parseInt(value);
@@ -23,7 +40,6 @@ export function DrawerWithForm({
 
   async function handleAddProduct(event) {
     event.preventDefault();
-    const token = window.localStorage.getItem(TOKEN);
 
     const { data } = await axios.post(
       "/api/products",
@@ -35,7 +51,35 @@ export function DrawerWithForm({
       }
     );
     setProducts([...products, { ...data }]);
-    setShowAddProductSlideIn(false);
+    setShowSlideInModal(false);
+  }
+
+  async function handleUpdateProductInDb(e) {
+    e.preventDefault();
+    const { data } = await axios.put(
+      `/api/products/${selectedProduct.id}`,
+      { ...inputProduct },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+
+    let newProducts = [...products];
+    const index = newProducts.findIndex(
+      (product, idx) => product.id === selectedProduct.id
+    );
+
+    newProducts[index] = data;
+
+    setProducts(newProducts);
+    setShowSlideInModal(false);
+  }
+
+  function handleCloseModal() {
+    setSelectedProduct({});
+    setShowSlideInModal(false);
   }
 
   return (
@@ -46,7 +90,7 @@ export function DrawerWithForm({
             id="drawer-label"
             className="inline-flex items-center mb-2 text-base font-semibold text-gray-500 uppercase dark:text-gray-400 pl-4"
           >
-            Add Product
+            {isUpdate ? "Update Product" : "Add Product"}
           </h5>
         </div>
 
@@ -55,7 +99,7 @@ export function DrawerWithForm({
           data-drawer-hide="drawer-contact"
           aria-controls="drawer-contact"
           className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
-          onClick={() => setShowAddProductSlideIn(false)}
+          onClick={handleCloseModal}
         >
           <svg
             className="w-3 h-3"
@@ -82,9 +126,11 @@ export function DrawerWithForm({
             >
               Name
             </label>
+
             <input
               type="text"
               name="name"
+              value={inputProduct.name}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               placeholder="Peach Tea"
               required
@@ -101,6 +147,7 @@ export function DrawerWithForm({
             <input
               type="number"
               name="price"
+              value={inputProduct.price}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="15"
               required
@@ -109,14 +156,15 @@ export function DrawerWithForm({
           </div>
           <div className="mb-2">
             <label
-              htmlFor="quantity"
+              htmlFor="inventoryQuantity"
               className="block mb-2 text-sm font-medium text-gray-900"
             >
               Quantity
             </label>
             <input
               type="text"
-              name="quantity"
+              name="inventoryQuantity"
+              value={inputProduct.inventoryQuantity}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="100"
               required
@@ -132,6 +180,7 @@ export function DrawerWithForm({
             </label>
             <textarea
               name="description"
+              value={inputProduct.description}
               rows="4"
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Best tea ever"
@@ -143,7 +192,7 @@ export function DrawerWithForm({
               <input
                 id="default-radio-1"
                 type="radio"
-                value={false}
+                checked={!inputProduct.isDecaf}
                 name="isDecaf"
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
               />
@@ -158,7 +207,7 @@ export function DrawerWithForm({
               <input
                 id="default-radio-2"
                 type="radio"
-                value={true}
+                checked={inputProduct.isDecaf}
                 name="isDecaf"
                 className="w-4 h-4 text-blue-600  border-gray-900 focus:ring-blue-500 "
               />
@@ -166,14 +215,17 @@ export function DrawerWithForm({
                 htmlFor="default-radio-2"
                 className="ms-2 text-sm font-medium text-gray-900"
               >
-                Decaf
+                Decaffeinated
               </label>
             </div>
           </div>
+
           <div className="">
             <Button
-              text="Add Product"
-              onClickFunc={handleAddProduct}
+              text={isUpdate ? "Update Product" : "Add Product"}
+              onClickFunc={
+                isUpdate ? handleUpdateProductInDb : handleAddProduct
+              }
               addedStyle="rounded-xl w-64"
             />
           </div>

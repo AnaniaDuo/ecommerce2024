@@ -4,25 +4,38 @@ import { useParams, useHistory } from "react-router-dom";
 import Button from "./reusableComponents/Button";
 import ProductHorizontalCard from "./ProductHorizontalCard";
 import EmptyCartView from "./EmptyCartView";
+import { TOKEN } from "../components/utilities/constants";
 
 function Cart() {
   const [cartProducts, setCartProducts] = useState([]);
   const { userId } = useParams();
   const history = useHistory();
+  const token = window.localStorage.getItem(TOKEN);
 
   useEffect(() => {
     async function fetchCart() {
-      const { data } = await axios.get(`/api/users/${userId}/cart`);
+      const { data } = await axios.get(`/api/users/${userId}/cart`, {
+        headers: {
+          authorization: token,
+        },
+      });
       setCartProducts(data.products);
     }
     fetchCart();
   }, []);
 
   async function handleCheckout() {
-    const { data } = await axios.put(`/api/users/${userId}/checkout`, {
-      isCompleted: true,
-    });
-    console.log("what is data after checkout", data);
+    await axios.put(
+      `/api/users/${userId}/checkout`,
+      {
+        isCompleted: true,
+      },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
     history.push("/home");
   }
 
