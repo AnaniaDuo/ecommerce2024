@@ -41,9 +41,8 @@ function Cart() {
           authorization: token,
         },
       });
-
       if (response.status === 200) {
-        setCartProducts(response.data.products);
+        setCartProducts(response.data?.products);
       }
     }
     fetchCart();

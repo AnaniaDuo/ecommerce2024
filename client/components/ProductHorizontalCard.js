@@ -9,7 +9,6 @@ function ProductHorizontalCard({
   const { name, price, imageUrl } = product;
   const { quantity } = product.OrderDetails;
   const [quantityState, setQuantityState] = useState(quantity);
-  const REACT_APP_BASE_URL = "http://localhost:8080";
 
   function handleChangeQuantity(e) {
     const updatedQuantity = parseInt(e.target.value);
@@ -25,7 +24,7 @@ function ProductHorizontalCard({
         className={`h-40 lg:h-auto lg:w-40 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden`}
         title="Product image"
       >
-        <img className=".bg-cover" src={`${REACT_APP_BASE_URL}/${imageUrl}`} />
+        <img className=".bg-cover" src={imageUrl} />
       </div>
       <div className="border-r border-b border-l border-gray-100 lg:border-l-0 lg:border-t lg:border-gray-100 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal w-full">
         <div className="mb-8">

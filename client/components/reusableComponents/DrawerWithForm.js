@@ -66,14 +66,9 @@ export function DrawerWithForm({
       }
     );
 
-    let newProducts = [...products];
-    const index = newProducts.findIndex(
-      (product, idx) => product.id === selectedProduct.id
-    );
+    console.log("what is data now", data);
 
-    newProducts[index] = data;
-
-    setProducts(newProducts);
+    setProducts(data);
     setShowSlideInModal(false);
   }
 
@@ -220,13 +215,13 @@ export function DrawerWithForm({
             </div>
           </div>
 
-          <div className="">
+          <div className="mt-4">
             <Button
               text={isUpdate ? "Update Product" : "Add Product"}
               onClickFunc={
                 isUpdate ? handleUpdateProductInDb : handleAddProduct
               }
-              addedStyle="rounded-xl w-64"
+              addedStyle="rounded-xl w-72"
             />
           </div>
         </form>

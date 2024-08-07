@@ -5,16 +5,13 @@ import { logout } from "../store";
 
 const Navbar = (props) => {
   const { handleClick, isLoggedIn, firstName, isAdmin } = props;
-  const REACT_APP_BASE_URL = "http://localhost:8080";
+
   return (
-    <div
-      className="text-white sticky top-0 z-10 bg-gray-800"
-      // style={{ backgroundColor: "#92a143" }}
-      // style={{ backgroundColor: "#b0d4c7" }}
-    >
+    <div className="text-white sticky top-0 z-10 bg-gray-800">
       <div className="flex items-center w-full">
         <div className="w-1/3 flex justify-end">
-          <img className="w-40 h-28" src={`${REACT_APP_BASE_URL}/logo.png`} />
+          {/* <img className="w-40 h-28" src={`${REACT_APP_BASE_URL}/logo.png`} /> */}
+          <img className="w-40 h-28" src={"https://i.imgur.com/dmKma80.png"} />
         </div>
         <nav
           className="w-full flex justify-center items-center

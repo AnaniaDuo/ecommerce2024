@@ -8,7 +8,7 @@ module.exports = router;
 // GET /api/products
 router.get("/", async (req, res, next) => {
   try {
-    const products = await Product.findAll({});
+    const products = await Product.findAll({ order: [["id", "ASC"]] });
     res.json(products);
   } catch (err) {
     next(err);
@@ -42,7 +42,8 @@ router.put("/:productId", requireToken, isAdmin, async (req, res, next) => {
     const productId = req.params.productId;
     const productToBeUpdated = await Product.findByPk(productId);
     await productToBeUpdated.update(req.body);
-    res.json(productToBeUpdated);
+    const products = await Product.findAll({ order: [["id", "ASC"]] });
+    res.json(products);
   } catch (err) {
     next(err);
   }

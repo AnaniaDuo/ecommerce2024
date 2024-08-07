@@ -50,7 +50,7 @@ const AuthForm = (props) => {
           />
         </div>
 
-        <Button text={displayName} />
+        <Button text={displayName} addedStyle="mt-4" />
         {error && error.response ? (
           <div className="text-red-700"> {error.response.data} </div>
         ) : (

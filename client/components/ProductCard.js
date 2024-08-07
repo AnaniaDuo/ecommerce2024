@@ -35,6 +35,8 @@ function ProductCard({
     if (response.status === 200) {
       console.log("successfull added to cart");
       toast("Successfully added to cart!");
+    } else {
+      toast("Error adding to cart");
     }
   }
 

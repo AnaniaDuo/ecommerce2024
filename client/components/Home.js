@@ -31,7 +31,7 @@ export const Home = (props) => {
 
   return (
     <div className="mt-2">
-      <div className="flex items-center justify-center ">
+      <div className="flex items-center justify-center gap-2">
         <Filter
           products={products}
           setDisplayedProducts={setDisplayedProducts}

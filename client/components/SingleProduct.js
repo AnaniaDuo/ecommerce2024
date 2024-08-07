@@ -14,7 +14,7 @@ function SingleProduct() {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   const history = useHistory();
-  const REACT_APP_BASE_URL = "http://localhost:8080";
+
   const token = window.localStorage.getItem(TOKEN);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ function SingleProduct() {
   return (
     <div className="flex p-4 gap-8 mt-8">
       <div className="flex justify-center">
-        <img src={`${REACT_APP_BASE_URL}/${product.imageUrl}`} />
+        <img src={product.imageUrl} />
       </div>
       <div className="space-y-2">
         <h2>{product.name}</h2>
