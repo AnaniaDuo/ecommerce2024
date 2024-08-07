@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Button from "./reusableComponents/Button";
 import { TOKEN } from "../components/utilities/constants";
 
 function SingleProduct() {
-  const userId = useSelector((state) => {
-    return state.auth.id;
+  const user = useSelector((state) => {
+    return state.auth;
   });
+  const userId = user.id;
+  const isAdmin = user.isAdmin;
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   const history = useHistory();
@@ -35,9 +37,8 @@ function SingleProduct() {
         },
       }
     );
-    console.log("response", response);
+
     if (response.status === 200) {
-      console.log("about to navigate to new page");
       history.push(`/users/${userId}/cart`);
     }
   }
@@ -52,7 +53,9 @@ function SingleProduct() {
         <div className="text-xl font-medium">${product.price}</div>
 
         <div>{product.description}</div>
-        <Button text="Add to Cart" onClickFunc={handleAddToCart} />
+        {!isAdmin && (
+          <Button text="Add to Cart" onClickFunc={handleAddToCart} />
+        )}
       </div>
     </div>
   );

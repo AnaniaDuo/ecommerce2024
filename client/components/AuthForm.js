@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
+import Button from "./reusableComponents/Button";
 
 /**
  * COMPONENT
@@ -9,24 +10,52 @@ const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <div className="mt-8">
-      <form onSubmit={handleSubmit} name={name}>
+    <div>
+      <div
+        className="absolute inset-0 opacity-50 h-full w-full bg-cover bg-center z-0"
+        style={{
+          backgroundImage:
+            'url("https://images.squarespace-cdn.com/content/v1/61e8bb2a2cf8670534839093/520b65a3-2fc1-4851-8513-f1b46cc3938a/image1.jpg")',
+        }}
+      ></div>
+      <form
+        onSubmit={handleSubmit}
+        name={name}
+        className="absolute inset-0 flex flex-col items-center justify-center h-full text-xl"
+      >
         <div>
-          <label htmlFor="username">
+          <label
+            htmlFor="username"
+            className="block mb-2  font-medium text-gray-900 "
+          >
             <small>Username</small>
           </label>
-          <input name="username" type="text" />
+          <input
+            name="username"
+            type="text"
+            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          />
         </div>
         <div>
-          <label htmlFor="password">
+          <label
+            htmlFor="password"
+            className="block mb-2 font-medium text-gray-900 "
+          >
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input
+            name="password"
+            type="password"
+            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          />
         </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
+
+        <Button text={displayName} />
+        {error && error.response ? (
+          <div className="text-red-700"> {error.response.data} </div>
+        ) : (
+          <div className="invisible">Good</div>
+        )}
       </form>
     </div>
   );

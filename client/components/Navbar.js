@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { logout } from "../store";
 
 const Navbar = (props) => {
-  const { handleClick, isLoggedIn, firstName } = props;
+  const { handleClick, isLoggedIn, firstName, isAdmin } = props;
   const REACT_APP_BASE_URL = "http://localhost:8080";
   return (
     <div
-      className="text-white sticky top-0 z-10 -my-4"
+      className="text-white sticky top-0 z-10 bg-gray-800"
       // style={{ backgroundColor: "#92a143" }}
-      style={{ backgroundColor: "#b0d4c7" }}
+      // style={{ backgroundColor: "#b0d4c7" }}
     >
       <div className="flex items-center w-full">
         <div className="w-1/3 flex justify-end">
@@ -25,7 +25,7 @@ const Navbar = (props) => {
               {/* The navbar will show these links after you log in */}
               <Link to="/home">Home</Link>
               <Link to={`/about`}>About Us</Link>
-              <Link to={`/users/${props.userId}/cart`}>Cart</Link>
+              {!isAdmin && <Link to={`/users/${props.userId}/cart`}>Cart</Link>}
               <a href="#" onClick={handleClick}>
                 Logout
               </a>
@@ -54,6 +54,7 @@ const mapState = (state) => {
     isLoggedIn: !!state.auth.id,
     userId: state.auth.id,
     firstName: state.auth.firstName,
+    isAdmin: state.auth.isAdmin,
   };
 };
 

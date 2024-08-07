@@ -30,7 +30,7 @@ export const Home = (props) => {
   }, [products]);
 
   return (
-    <div className="mt-8 ">
+    <div className="mt-2">
       <div className="flex items-center justify-center ">
         <Filter
           products={products}

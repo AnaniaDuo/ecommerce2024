@@ -54,10 +54,15 @@ router.post("/:userId/cart", requireToken, async (req, res, next) => {
         isCompleted: false,
       },
     });
-    await OrderDetails.create({
-      orderId: cart.id,
-      productId,
+
+    const [orderDetails, isCreated] = await OrderDetails.findOrCreate({
+      where: { orderId: cart.id, productId },
     });
+
+    if (!isCreated) {
+      orderDetails.quantity += 1;
+      orderDetails.save();
+    }
 
     const updatedCart = await Order.findOne({
       where: {

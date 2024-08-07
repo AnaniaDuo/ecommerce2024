@@ -29,7 +29,7 @@ class Routes extends Component {
             <Route exact path="/users" component={Users} />
             <Route path="/users/:userId/cart" component={Cart} />
             <Route path="/about" component={AboutUs} />
-            {/* <Redirect to="/home" /> */}
+            <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>
