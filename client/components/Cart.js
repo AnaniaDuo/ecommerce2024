@@ -76,6 +76,18 @@ function Cart() {
     history.push("/home");
   }
 
+  async function handleDeleteProductInCart(productId) {
+    await axios.delete(`/api/users/${userId}/cart/${productId}`, {
+      headers: {
+        authorization: token,
+      },
+    });
+    const filterCartProducts = [...cartProducts].filter(
+      (prod) => prod.id !== productId
+    );
+    setCartProducts(filterCartProducts);
+  }
+
   function handleChange(e) {
     const { name, value } = e.target;
     console.log("is changing");
@@ -110,6 +122,7 @@ function Cart() {
           cartProducts={cartProducts}
           setCartProducts={setCartProducts}
           idx={idx}
+          handleDeleteProductInCart={handleDeleteProductInCart}
         />
       ))}
       <div className="text-xl font-bold w-full text-right">Total: ${total}</div>

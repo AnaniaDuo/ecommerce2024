@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import Button from "./reusableComponents/Button";
 
 function ProductHorizontalCard({
   product,
   cartProducts,
   setCartProducts,
   idx,
+  handleDeleteProductInCart,
 }) {
   const { name, price, imageUrl } = product;
   const { quantity } = product.OrderDetails;
@@ -27,7 +29,7 @@ function ProductHorizontalCard({
         <img className=".bg-cover" src={imageUrl} />
       </div>
       <div className="border-r border-b border-l border-gray-100 lg:border-l-0 lg:border-t lg:border-gray-100 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal w-full">
-        <div className="mb-8">
+        <div className="">
           <div className="text-gray-900 font-bold text-xl mb-2 grid grid-cols-4 ">
             <div>Name:</div>
             <div className="col-span-3">{name}</div>
@@ -40,11 +42,18 @@ function ProductHorizontalCard({
               value={quantityState}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 col-span-3"
               onChange={handleChangeQuantity}
+              min={1}
             />
           </label>
           <div className="text-gray-700 text-base grid grid-cols-4 mt-2">
             <div>Total:</div>
             <div className="col-span-3">${quantity * price}</div>
+          </div>
+          <div className="w-full flex justify-end">
+            <Button
+              text="Delete"
+              onClickFunc={() => handleDeleteProductInCart(product.id)}
+            />
           </div>
         </div>
       </div>

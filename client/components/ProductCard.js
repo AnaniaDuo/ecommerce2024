@@ -44,7 +44,7 @@ function ProductCard({
     <div className="max-w-sm rounded overflow-hidden shadow-lg hover:bg-gray-200 h p-2 text-gray-700">
       <button className="">
         <Link to={`/products/${id}`}>
-          <img className="w-full max-h-80" src={imageUrl} alt="Product image" />
+          <img className="w-80 max-h-80" src={imageUrl} alt="Product image" />
           <div className="px-6 py-3 flex items-center justify-center">
             <span className="font-bold text-xl">{name}</span>
             <span className="mx-2 ">${price}</span>

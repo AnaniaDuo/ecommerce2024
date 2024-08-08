@@ -83,7 +83,7 @@ router.delete(
   async (req, res, next) => {
     try {
       const userId = req.params.userId;
-      const productId = req.body.productId;
+      const productId = req.params.productId;
       const cart = await Order.findOne({
         where: {
           userId,
