@@ -14,3 +14,15 @@ export function validateForm(checkoutInfo) {
 
   return newErrors;
 }
+export function validateSignupForm(signupInfo, method) {
+  const newErrors = {};
+  if (method === "signup") {
+    if (!signupInfo.firstName) newErrors.firstName = "First name is required";
+    if (!signupInfo.lastName) newErrors.lastName = "Last name is required";
+    if (!signupInfo.email) newErrors.email = "Email is required";
+  }
+  if (!signupInfo.username) newErrors.username = "User name is required";
+  if (!signupInfo.password) newErrors.password = "Password is required";
+
+  return newErrors;
+}
