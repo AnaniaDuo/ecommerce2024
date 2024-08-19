@@ -12,18 +12,21 @@ const AuthForm = (props) => {
   const { name, displayName, handleSubmit } = props;
   const [formError, setFormError] = useState({});
 
-  function handleSubmitFunc(e) {
+  async function handleSubmitFunc(e) {
     e.preventDefault();
-    const result = handleSubmit(e, name);
+    const result = await handleSubmit(e, name);
     if (result?.type === "error") {
       setFormError(result.error);
+    }
+    if (result?.auth?.error) {
+      setFormError({ error: result?.auth?.error?.response?.data });
     }
   }
 
   return (
-    <div>
+    <div className="auth-form">
       <div
-        className="absolute inset-0 opacity-50 h-full w-full bg-cover bg-center z-0"
+        className="absolute inset-0  h-full w-full bg-cover bg-center z-0"
         style={{
           backgroundImage:
             'url("https://images.squarespace-cdn.com/content/v1/61e8bb2a2cf8670534839093/520b65a3-2fc1-4851-8513-f1b46cc3938a/image1.jpg")',
@@ -38,43 +41,46 @@ const AuthForm = (props) => {
           {name === "signup" && (
             <div>
               <div>
-                <label
+                {/* <label
                   htmlFor="firstName"
                   className="block mb-2  font-medium text-gray-900 "
                 >
                   <small>First Name</small>
-                </label>
+                </label> */}
                 <input
                   name="firstName"
                   type="text"
+                  placeholder="First Name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 />
                 <ErrorMessage message={formError?.firstName} />
               </div>
               <div>
-                <label
+                {/* <label
                   htmlFor="lastName"
                   className="block mb-2  font-medium text-gray-900 "
                 >
                   <small>Last Name</small>
-                </label>
+                </label> */}
                 <input
                   name="lastName"
                   type="text"
+                  placeholder="Last Name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 />
                 <ErrorMessage message={formError?.lastName} />
               </div>
               <div>
-                <label
+                {/* <label
                   htmlFor="email"
                   className="block mb-2  font-medium text-gray-900 "
                 >
                   <small>Email</small>
-                </label>
+                </label> */}
                 <input
                   name="email"
                   type="text"
+                  placeholder="Email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 />
                 <ErrorMessage message={formError?.email} />
@@ -82,33 +88,36 @@ const AuthForm = (props) => {
             </div>
           )}
           <div>
-            <label
+            {/* <label
               htmlFor="username"
               className="block mb-2  font-medium text-gray-900 "
             >
               <small>Username</small>
-            </label>
+            </label> */}
             <input
               name="username"
               type="text"
+              placeholder="Username"
               className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             />
             <ErrorMessage message={formError?.username} />
           </div>
           <div>
-            <label
+            {/* <label
               htmlFor="password"
               className="block mb-2 font-medium text-gray-900 "
             >
               <small>Password</small>
-            </label>
+            </label> */}
             <input
               name="password"
               type="password"
+              placeholder="Password"
               className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             />
             <ErrorMessage message={formError?.password} />
           </div>
+          {formError?.error && <ErrorMessage message={formError.error} />}
           <div className="w-full flex justify-center">
             <Button text={displayName} addedStyle="mt-4" />
           </div>
@@ -164,7 +173,7 @@ const mapDispatch = (dispatch) => {
         return { type: "error", error: error };
       }
 
-      dispatch(
+      return dispatch(
         authenticate(username, password, formName, firstName, lastName, email)
       );
     },

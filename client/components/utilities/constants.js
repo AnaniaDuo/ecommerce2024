@@ -19,7 +19,7 @@ export const ABOUT_US_INFO = [
 
 export const ABOUT_US_LONG_DETAILS = (
   <div style={{ letterSpacing: "0.8px" }} className="font-thin">
-    <p className="text-xl font-bold text-gray-700">Welcome to Positivitea!</p>
+    <p className="text-xl font-bold">Welcome to Positivitea!</p>
     <br />
     <p>
       At Positivitea, we believe that a cup of tea can bring positivity and
@@ -43,9 +43,14 @@ export const ABOUT_US_LONG_DETAILS = (
       profits is dedicated to reforesting efforts, helping to plant and nurture
       more trees around the globe. By choosing Positivitea, you are not only
       indulging in the finest teas but also contributing to a greener, healthier
-      planet.\nDiscover our range of flavors and join us on a journey of taste,
+      planet.
+    </p>
+    <br />
+
+    <p>
+      Discover our range of flavors and join us on a journey of taste,
       mindfulness, and environmental stewardship. At Positivitea, every cup is
-      brewed with care, compassion, and a touch of positivity.{" "}
+      brewed with care, compassion, and a touch of positivity.
     </p>
     <br />
     <br />

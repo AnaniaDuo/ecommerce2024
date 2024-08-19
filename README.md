@@ -16,4 +16,5 @@ Tech Stack
 - Express
 - Redux
 - TailwindCSS
+- Animate.css
 - Heroku
