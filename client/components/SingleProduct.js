@@ -54,7 +54,11 @@ function SingleProduct() {
 
         <div>{product.description}</div>
         {!isAdmin && (
-          <Button text="Add to Cart" onClickFunc={handleAddToCart} />
+          <Button
+            text="Add to Cart"
+            onClickFunc={handleAddToCart}
+            addedStyle="bg-orange-600 hover:bg-orange-500"
+          />
         )}
       </div>
     </div>

@@ -40,7 +40,10 @@ function AdminProducts({ displayedProducts, products, setProducts }) {
       <div className="flex justify-center gap-4 my-4">
         <Button text="Add Product" onClickFunc={handleAddProduct} />
         <Link to="/users">
-          <Button text="View User" />
+          <Button text="View Users" />
+        </Link>
+        <Link to="/orders">
+          <Button text="View Orders" />
         </Link>
       </div>
       <div className="flex flex-wrap justify-center gap-4 pb-12">

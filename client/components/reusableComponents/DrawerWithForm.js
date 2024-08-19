@@ -79,7 +79,7 @@ export function DrawerWithForm({
 
   return (
     <div>
-      <div className="bg-gray-50 fixed top-0 right-0 z-40 h-screen p-4 bg-white w-80 dark:bg-gray-200">
+      <div className="bg-gray-50 fixed top-0 right-0 z-40 h-screen p-4 bg-white sm:w-96 w-full dark:bg-gray-200">
         <div className="-mx-4 border-b-2 border-gray-300">
           <h5
             id="drawer-label"
@@ -176,7 +176,7 @@ export function DrawerWithForm({
             <textarea
               name="description"
               value={inputProduct.description}
-              rows="4"
+              rows="8"
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Best tea ever"
               onChange={handleChange}

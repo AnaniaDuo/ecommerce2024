@@ -2,8 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Fonts */
+@font-face {
+  font-family: Centra;
+  src: url("./font/CentraNo2-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Centra;
+  src: url("./font/CentraNo2-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Centra;
+  src: url("./font/CentraNo2-Book.ttf");
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
 body {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  font-family: "Centra", sans-serif !important;
+  letter-spacing: 0.2px;
 }
 
 a {
@@ -31,4 +57,11 @@ h1 {
 h2 {
   font-size: 30px;
   font-weight: bolder;
+}
+
+
+.nav-scrolled {
+  padding: 0px 0;
+  background-color: #121212;
+  opacity: 1;
 }

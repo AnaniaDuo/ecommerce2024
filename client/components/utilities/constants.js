@@ -18,7 +18,7 @@ export const ABOUT_US_INFO = [
 ];
 
 export const ABOUT_US_LONG_DETAILS = (
-  <div>
+  <div style={{ letterSpacing: "0.8px" }} className="font-thin">
     <p className="text-xl font-bold text-gray-700">Welcome to Positivitea!</p>
     <br />
     <p>

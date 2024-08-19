@@ -4,6 +4,7 @@ import Products from "./Products";
 import SearchBar from "./SearchBar";
 import AdminProducts from "./AdminProducts";
 import Filter from "./Filter";
+import Footer from "./Footer";
 import axios from "axios";
 
 /**
@@ -61,6 +62,9 @@ export const Home = (props) => {
           setProducts={setProducts}
         />
       )}
+      <div className="-mx-6">
+        <Footer />
+      </div>
     </div>
   );
 };

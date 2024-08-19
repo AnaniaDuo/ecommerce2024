@@ -57,7 +57,7 @@ function Filter({ products, setDisplayedProducts }) {
           aria-labelledby="menu-button"
           tabIndex="-1"
         >
-          <div className="py-2 p-4" role="none">
+          <div className="pt-3 p-4" role="none">
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -67,7 +67,7 @@ function Filter({ products, setDisplayedProducts }) {
               />
               <label htmlFor="cafeine">Cafeine</label>
             </div>
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-3">
               <input
                 type="checkbox"
                 id="decaf"

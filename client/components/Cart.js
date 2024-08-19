@@ -33,6 +33,7 @@ function Cart() {
   };
   const [checkoutInfo, setCheckoutInfo] = useState(INITIAL_CHECKOUT_STATE);
   const [error, setError] = useState({});
+  console.log("what is cartproduct", cartProducts);
 
   useEffect(() => {
     async function fetchCart() {
@@ -49,7 +50,7 @@ function Cart() {
   }, []);
 
   useEffect(() => {
-    if (cartProducts.length > 0) {
+    if (cartProducts?.length > 0) {
       let totalPrice = 0;
       for (let i = 0; i < cartProducts.length; i++) {
         const quantity = cartProducts[i].OrderDetails.quantity;
@@ -109,7 +110,7 @@ function Cart() {
     setShowCheckoutModal(false);
   }
 
-  if (!cartProducts.length) {
+  if (!cartProducts?.length) {
     return <EmptyCartView />;
   }
 

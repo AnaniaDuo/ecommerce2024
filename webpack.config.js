@@ -20,6 +20,17 @@ module.exports = {
         },
       },
       {
+        test: /\.(png|jpe?g|gif|svg)$/i, // Matches image files
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[path][name].[ext]", // Keeps the original file name
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         use: [
           "style-loader",

@@ -1,11 +1,13 @@
 import React from "react";
 import AboutUsCard from "./AboutUsCard";
+import Footer from "./Footer";
 import { ABOUT_US_INFO, ABOUT_US_LONG_DETAILS } from "./utilities/constants";
 
 function AboutUs() {
   return (
     <div className="-mx-6 bg-gray-200">
-      <div className="h-screen bg-cover bg-center bg-[url('../public/background.png')] -mt-2"></div>
+      <div className="h-screen bg-cover bg-center bg-[url('https://images.squarespace-cdn.com/content/v1/61e8bb2a2cf8670534839093/520b65a3-2fc1-4851-8513-f1b46cc3938a/image1.jpg')] "></div>
+      {/* <div className="h-screen bg-cover bg-center bg-[url('../public/background.png')] -mt-2"></div> */}
       <div className="flex gap-24 justify-center py-12  ">
         {ABOUT_US_INFO.map((info) => (
           <AboutUsCard info={info} />
@@ -23,6 +25,7 @@ function AboutUs() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

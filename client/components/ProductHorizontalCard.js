@@ -53,6 +53,7 @@ function ProductHorizontalCard({
             <Button
               text="Delete"
               onClickFunc={() => handleDeleteProductInCart(product.id)}
+              addedStyle="bg-red-600 hover:bg-red-500"
             />
           </div>
         </div>

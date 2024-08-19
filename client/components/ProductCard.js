@@ -58,12 +58,20 @@ function ProductCard({
       </button>
       {adminView ? (
         <div className="w-full flex justify-center gap-2">
-          <Button text="Delete" onClickFunc={handleClickDelete} />
+          <Button
+            text="Delete"
+            onClickFunc={handleClickDelete}
+            addedStyle="bg-red-600 hover:bg-red-500"
+          />
           <Button text="Update" onClickFunc={handleClickUpdate} />
         </div>
       ) : (
         <div className="w-full flex justify-center mb-3">
-          <Button text="Add to Cart" onClickFunc={handleAddToCart} />
+          <Button
+            text="Add to Cart"
+            onClickFunc={handleAddToCart}
+            addedStyle="bg-orange-500 hover:bg-orange-400"
+          />
         </div>
       )}
     </div>
